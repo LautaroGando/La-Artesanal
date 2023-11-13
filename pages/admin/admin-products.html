@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>La Artesanal - Administrador de Productos</title>
+</head>
+<body>
+    
+    <header>
+        <a href="#"><img src="/assets/images/logo.png" alt=""></a>
+        <nav>
+            <ul>
+                <a href="#"><li>INICIO</li></a>
+                <a href="#"><li>POSTRES</li></a>
+                <a href="#"><li>COMIDAS</li></a>
+                <a href="#"><li>PANADERIA</li></a>
+                <a href="#"><li>INGRESAR</li></a>
+            </ul>
+        </nav>
+        <div>
+            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-cart-shopping"></i>
+        </div>
+    </header>
+
+    <main class="admin">
+        <div class="form">
+            <form action="" id="form">
+                <h2>AGREGAR PRODUCTO</h2>
+                <input type="hidden" name="id" id="id">
+                <label for="image">Imagen:</label>
+                <input type="file" name="image" id="image">
+                <label for="product">Nombre del producto:</label>
+                <input type="text" name="product" id="product">
+                <label for="description">Descripcion:</label>
+                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                <label for="category">Categoria:</label>
+                <select name="category" id="category">
+                    <option value="">Seleccionar una opcion</option>
+                    <option value="Postres">Postres</option>
+                    <option value="Comidas">Comidas</option>
+                    <option value="Panaderia">Panaderia</option>
+                </select>
+                <label for="price">Precio:</label>
+                <input type="number" name="price" id="price">
+                <label for="createDate">Fecha de creacion:</label>
+                <input type="date" name="createDate" id="createDate">
+                <button type="submit">AGREGAR</button>
+            </form>
+        </div>
+        <div class="table">
+            <thead>
+                <tr>
+                    <th>IMAGEN</th>
+                    <th>NOMBRE DEL PRODUCTO</th>
+                    <th>DESCRIPCION</th>
+                    <th>CATEGORIA</th>
+                    <th>PRECIO</th>
+                    <th>FECHA DE CREACION</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr>
+                    <td>
+                        <img src="/assets/images/logo.png" alt="">
+                    </td>
+                    <td>Caca</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem animi laudantium, ex vitae qui ipsa laboriosam necessitatibus dolorem quisquam ea voluptatibus eaque. Dolores vel, sed natus minus veritatis ex adipisci!</td>
+                    <td>Postres</td>
+                    <td>$30000</td>
+                    <td>20/09/2023</td>
+                    <td>
+                        <button>
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                        <button>
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </div>
+    </main>
+
+    <footer>
+
+    </footer>
+
+
+    <script src="/js/admin-products.js"></script>
+</body>
+</html>

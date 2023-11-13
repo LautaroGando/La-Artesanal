@@ -1,0 +1,71 @@
+main.admin {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-inline: 20px;
+
+    & form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        flex-direction: column;
+        width: 400px;
+        height: 700px;
+        background-color: var(--primary-backgroundColor);
+
+        & h2 {
+            color: var(--primary-color);
+        }
+
+        & label {
+            color: var(--primary-color);
+            align-self: flex-start;
+            margin-inline: 50px;
+            font-weight: 700;
+        }
+
+        & input,
+        textarea,
+        select,
+        button {
+            color: var(--primary-color);
+            width: 300px;
+            height: 35px;
+            border: none;
+            outline: none;
+            resize: none;
+            background-color: var(--primary-backgroundColor);
+            border-bottom: 3px solid white;
+            transition: all 0.2s linear;
+
+            &:focus {
+                border-color: var(--primary-color);
+            }
+        }
+
+        & input:not(input[type="file"]),
+        textarea {
+            padding: 10px;
+            font-size: 18px;
+        }
+
+        & textarea {
+            height: 80px;
+        }
+
+        & button {
+            border: none;
+            background-color: var(--primary-color);
+            color: var(--primary-backgroundColor);
+            cursor: pointer;
+            transition: all 0.2s linear;
+            margin-top: 20px;
+
+            &:hover {
+                scale: 1.1;
+                color: white;
+            }
+        }
+    }
+}

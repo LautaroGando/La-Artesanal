@@ -1,0 +1,13 @@
+@import url(index.css);
+@import url(admin.css);
+
+:root {
+    --primary-backgroundColor: #ffdee3;
+    --primary-color: #c07b85;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
