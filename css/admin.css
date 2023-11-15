@@ -139,6 +139,40 @@ main.admin {
             }
         }
     }
+
+    
+}
+
+.swal2-popup {
+    background-color: var(--primary-backgroundColor);
+    color: var(--primary-color);
+}
+
+div:where(.swal2-container) div:where(.swal2-actions) {
+    gap: 20px;
+}
+
+.swal2-cancel {
+    background-color: var(--primary-color);
+    border: none;
+    transition: all 0.2s linear;
+
+    &:hover {
+        background-color: var(--primary-color);
+        scale: 1.1;
+    }
+}
+
+.swal2-confirm {
+    background-color: var(--secondary-color);
+    border: none;
+
+    transition: all 0.2s linear;
+
+    &:hover {
+        background-color: var(--secondary-color);
+        scale: 1.1;
+    }
 }
 
 @media screen and (max-width: 990px) {

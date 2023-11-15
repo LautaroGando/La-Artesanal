@@ -54,7 +54,7 @@ function paintProducts(array) {
     tableHTML.innerHTML = '';
 
     array.forEach(product => {
-        
+
         tableHTML.innerHTML += `<tr>
                                     <td>
                                         <img src="${product.image}" alt="">
@@ -65,10 +65,10 @@ function paintProducts(array) {
                                     <td>$${product.price}</td>
                                     <td>${formatDate(product.createDate)}</td>
                                     <td>
-                                        <button onclick="editProduct('${product.id}')">
+                                        <button onclick="editProduct('${product.id}', '${product.name}')">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </button>
-                                        <button onclick="deleteProduct('${product.id}')">
+                                        <button onclick="deleteProduct('${product.id}', '${product.name}')">
                                             <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                     </td>
@@ -118,41 +118,108 @@ function formatInputDate(date) {
 
 };
 
-function deleteProduct(id) {
+function deleteProduct(id, name) {
 
     const findIndexProduct = products.findIndex(product => product.id === id);
 
-    products.splice(findIndexProduct, 1);
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
 
-    paintProducts(products);
+    swalWithBootstrapButtons.fire({
+        title: `Desea eliminar el producto: ${name}?`,
+        text: "Los cambios no seran reversibles!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, eliminar!",
+        cancelButtonText: "No, cancelar!",
+        reverseButtons: true
+    }).then((result) => {
 
-    searchHTML.value = '';
+        if (result.isConfirmed) {
 
-    updateStorage();
+            swalWithBootstrapButtons.fire({
+                title: "Eliminado!",
+                text: "El articulo ha sido eliminado.",
+                icon: "success"
+            });
+
+            products.splice(findIndexProduct, 1);
+
+            paintProducts(products);
+
+            searchHTML.value = '';
+
+            updateStorage();
+
+        } else if (
+
+            result.dismiss === Swal.DismissReason.cancel
+
+        ) {
+            swalWithBootstrapButtons.fire({
+                title: "Cancelado!",
+                text: "El articulo no ha sido eliminado.",
+                icon: "error"
+            });
+        };
+
+    });
 
 };
 
-function editProduct(id) {
+function editProduct(id, name) {
 
     const findIndexProduct = products.find(products => products.id === id);
 
     const element = formHTML.elements;
 
-    element.id.value = findIndexProduct.id;
-    element.image.value = findIndexProduct.image;
-    element.name.value = findIndexProduct.name;
-    element.description.value = findIndexProduct.description;
-    element.category.value = findIndexProduct.category;
-    element.price.value = findIndexProduct.price;
-    element.createDate.value = formatInputDate(findIndexProduct.createDate);
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: "btn btn-success",
+            cancelButton: "btn btn-danger"
+        },
+        buttonsStyling: false
+    });
 
-    document.querySelector('button[type="submit"]').innerHTML = 'EDITAR';
-    document.querySelector('h2').innerHTML = 'EDITAR PRODUCTO';
+    swalWithBootstrapButtons.fire({
+        title: `Desea editar el producto: ${name}?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Si, editar!",
+        cancelButtonText: "No, cancelar!",
+        reverseButtons: true
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+
+            element.id.value = findIndexProduct.id;
+            element.image.value = findIndexProduct.image;
+            element.name.value = findIndexProduct.name;
+            element.description.value = findIndexProduct.description;
+            element.category.value = findIndexProduct.category;
+            element.price.value = findIndexProduct.price;
+            element.createDate.value = formatInputDate(findIndexProduct.createDate);
+
+            document.querySelector('button[type="submit"]').innerHTML = 'EDITAR';
+            document.querySelector('h2').innerHTML = 'EDITAR PRODUCTO';
+
+        } else if (
+
+            result.dismiss === Swal.DismissReason.cancel
+
+        );
+
+    });
 
 };
 
 function resetForm() {
-    
+
     formHTML.reset();
 
     formHTML.elements.id.value = '';
@@ -189,12 +256,26 @@ formHTML.addEventListener('submit', (e) => {
 
         products[index] = newProduct;
 
+        Swal.fire({
+            icon: "success",
+            title: "Producto editado exitosamente!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+
         document.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
         document.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
 
     } else {
 
         products.push(newProduct);
+
+        Swal.fire({
+            icon: "success",
+            title: "Producto agregado exitosamente!",
+            showConfirmButton: false,
+            timer: 1500
+        });
 
     };
 
