@@ -11,8 +11,21 @@ main.admin {
         gap: 15px;
         flex-direction: column;
         width: 400px;
-        height: 750px;
+        height: 800px;
         background-color: var(--primary-backgroundColor);
+
+        & input[id="search"] {
+            background-color: white;
+            margin-bottom: 10px;
+            width: 320px;
+            border: none;
+            outline: none;
+            height: 45px;
+            padding: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 8px 8px 0 0;
+        }
 
         & h2 {
             color: var(--primary-color);
@@ -69,30 +82,108 @@ main.admin {
         }
     }
 
-    & table,
-    th,
-    td {
-        border: 1px solid var(--primary-color);
-        text-align: center;
-    }
-
-    & th {
-        color: var(--primary-color);
-        width: 200px;
-        font-size: 14px;
-        padding: 15px;
-        background-color: var(--primary-backgroundColor);
-    }
-
-    & td {
+    .table {
+        position: relative;
         overflow: auto;
+        min-height: 800px;
 
-        & img {
-            width: 90px;
+        & table,
+        th,
+        td {
+            text-align: center;
+            border-collapse: collapse;
+            border: 1px solid var(--primary-color);
+        }
+
+        & table {
+            min-width: 1000px;
+            border-collapse: collapse;
+
+            & th {
+                color: var(--primary-color);
+                width: 200px;
+                font-size: 14px;
+                padding: 15px;
+                background-color: var(--primary-backgroundColor);
+                position: sticky;
+                top: 0px;
+            }
+
+            & td {
+                width: 200px;
+                padding: 5px;
+                overflow: auto;
+                color: var(--primary-color);
+
+                & img {
+                    width: 90px;
+                }
+
+                & button {
+                    border: none;
+                    background-color: white;
+                    color: var(--primary-color);
+                    font-size: 22px;
+                    margin-inline: 5px;
+                    transition: all 0.2s linear;
+
+                    &:hover {
+                        color: #87bbeb;
+                        scale: 1.2;
+                    }
+                }
+            }
+
+            & td:nth-child(3) {
+                width: 900px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 990px) {
+    
+    main.admin {
+        flex-direction: column;
+        align-items: center;
+    
+        & form {
+            gap: 10px;
+            width: 350px;
+            height: 750px;
+            margin-right: 0;
+    
+            & input[id="search"] {
+                width: 300px;
+                height: 35px;
+            }
+    
+            & label {
+                margin-inline: 35px;
+            }
+    
+            & input,
+            textarea,
+            select,
+            button {
+                width: 280px;
+                height: 30px;
+            }
+    
+            & input:not(input[type="file"]),
+            textarea {
+                padding: 10px;
+                font-size: 18px;
+            }
+    
+            & textarea {
+                height: 70px;
+            }
+        }
+    
+        .table {
+            height: 750px;
         }
     }
 
-    & td:nth-child(3) {
-        width: 900px;
-    }
 }

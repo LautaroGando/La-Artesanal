@@ -1,9 +1,19 @@
 @import url(index.css);
 @import url(admin.css);
 
+::-webkit-scrollbar {
+    width: 20px;
+    background-color: var(--primary-backgroundColor);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
 :root {
     --primary-backgroundColor: #ffdee3;
     --primary-color: #c07b85;
+    --secondary-color: #87bbeb;
 }
 
 body {
