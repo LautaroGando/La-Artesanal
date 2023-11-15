@@ -205,8 +205,8 @@ function editProduct(id, name) {
             element.price.value = findIndexProduct.price;
             element.createDate.value = formatInputDate(findIndexProduct.createDate);
 
-            document.querySelector('button[type="submit"]').innerHTML = 'EDITAR';
-            document.querySelector('h2').innerHTML = 'EDITAR PRODUCTO';
+            formHTML.querySelector('button[type="submit"]').innerHTML = 'EDITAR';
+            formHTML.querySelector('h2').innerHTML = 'EDITAR PRODUCTO';
 
         } else if (
 
@@ -263,8 +263,8 @@ formHTML.addEventListener('submit', (e) => {
             timer: 1500
         });
 
-        document.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
-        document.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
+        formHTML.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
+        formHTML.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
 
     } else {
 
