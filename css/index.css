@@ -1,64 +1,55 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
+.container-fluid {
+
+    .navbar-brand {
+
+        & img {
+            width: 150px;
+        }
+    }
 }
 
-header {
-    height: 180px;
-    width: 100%;
+.bg-pink {
     background-color: var(--primary-backgroundColor);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem;
+}
 
-    & img {
-        width: 150px;
-    }
+.collapse {
 
-    & nav {
-        
-        & ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-            font-size: 24px;
+    .navbar-nav {
+
+        .nav-item {
 
             & a {
-                text-decoration: none;
                 color: var(--primary-color);
-                transition: all 0.2s linear;
+                font-size: 16px;
             }
         }
     }
+}
 
-    & div {
-        display: flex;
-        gap: 50px;
+.container-users-shopping {
+    gap: 50px;
+    color: var(--primary-color);
+    font-size: 30px;
+    justify-content: space-between;
 
-        & i {
-            color: var(--primary-color);
-            font-size: 26px;
-            position: relative;
-            cursor: pointer;
+    & i {
+        position: relative;
+        cursor: pointer;
 
-            &:nth-child(2)::after {
-                content: '0';
-                position: absolute;
-                width: 12px;
-                height: 12px;
-                background-color: #996068;
-                border-radius: 50%;
-                top: -7px;
-                left: 25px;
-                font-size: 8px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                color: var(--primary-backgroundColor);
-            }
+        &:nth-child(1)::after {
+            content: '0';
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            color: var(--primary-backgroundColor);
+            background-color: var(--primary-color);
+            font-size: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: -8px;
+            right: -8px;
+            border-radius: 50%;
         }
     }
 }
