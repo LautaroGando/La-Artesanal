@@ -1,51 +1,8 @@
-const users = [
-    {
-        id: crypto.randomUUID(),
-        image: '/assets/images/logo.png',
-        name: 'Abril Gando',
-        username: 'Abrilucha',
-        email: 'abrilgando10@gmail.com',
-        confirmEmail: 'abrilgando10@gmail.com',
-        pass: 'abrilucha',
-        confirmPass: 'abrilucha',
-        location: 'Liniers',
-        date: new Date('2005-03-29' + 'T00:00:00-03:00').getTime(),
-        role: 'ADMIN',
-        createDate: new Date().getTime(),
-    },
-    {
-        id: crypto.randomUUID(),
-        image: '/assets/images/logo.png',
-        name: 'Valentina Molina',
-        username: 'Valen',
-        email: 'valenmolina@gmail.com',
-        confirmEmail: 'valenmolina@gmail.com',
-        pass: 'valenmolina03',
-        confirmPass: 'valenmolina03',
-        location: 'Liniers',
-        date: new Date('2005-02-19' + 'T00:00:00-03:00').getTime(),
-        role: 'ADMIN',
-        createDate: new Date().getTime(),
-    },
-    {
-        id: crypto.randomUUID(),
-        image: '/assets/images/logo.png',
-        name: 'Lautaro Gando',
-        username: 'Gandito',
-        email: 'lauticapo1910cavs@gmail.com',
-        confirmEmail: 'lauticapo1910cavs@gmail.com',
-        pass: 'Ganditocapogaso.3',
-        confirmPass: 'Ganditocapogaso.3',
-        location: 'Liniers',
-        date: new Date('2001-05-22' + 'T00:00:00-03:00').getTime(),
-        role: 'USER',
-        createDate: new Date().getTime(),
-    },
-];
-
 const formHTML = document.getElementById('form');
 const tableHTML = document.getElementById('tbody');
 const searchHTML = document.getElementById('search');
+
+const users = JSON.parse(localStorage.getItem('user'));
 
 function paintUsers(array) {
 
@@ -152,6 +109,10 @@ function deleteUser(id, name) {
 
             paintUsers(users);
 
+            updateStorage();
+
+            searchHTML.value = '';
+
         } else if (
 
             result.dismiss === Swal.DismissReason.cancel
@@ -218,3 +179,170 @@ function editUser(id, name) {
     });
 
 };
+
+function resetForm() {
+
+    formHTML.reset();
+
+    formHTML.elements.id.value = '';
+
+};
+
+function updateStorage() {
+
+    localStorage.setItem('user', JSON.stringify(users));
+
+};
+
+searchHTML.addEventListener('keyup', (e) => {
+
+    const element = e.target.value.toLowerCase();
+
+    const findUserArray = users.filter(user => {
+
+        const name = user.name.toLowerCase();
+
+        if (name.includes(element)) {
+
+            return true;
+
+        };
+
+        return;
+
+    });
+
+    paintUsers(findUserArray);
+
+
+
+});
+
+formHTML.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const element = e.target.elements;
+
+    const id = element.id.value ? element.id.value : crypto.randomUUID();
+
+    const newUser = {
+        id: id,
+        image: element.image.value,
+        name: element.name.value,
+        username: element.username.value,
+        email: element.email.value,
+        confirmEmail: element.confirmEmail.value,
+        pass: element.pass.value,
+        confirmPass: element.confirmPass.value,
+        location: element.location.value,
+        date: new Date(element.date.value + 'T00:00:00-03:00').getTime(),
+        role: element.role.value,
+        createDate: new Date().getTime(),
+    };
+
+    const findUser = users.find(user => user.username === element.username.value);
+
+    if (findUser && findUser.id !== element.id.value) {
+
+        Swal.fire({
+            icon: "error",
+            title: "El usuario ya esta registrado!",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+
+    };
+
+    if (element.email.value !== element.confirmEmail.value) {
+
+        Swal.fire({
+            icon: "error",
+            title: "Los correos deben coincidir!",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+
+    };
+
+    if (element.pass.value !== element.confirmPass.value) {
+
+        Swal.fire({
+            icon: "error",
+            title: "Las claves deben coincidir!",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+
+    };
+
+    if (element.role.value !== 'ADMIN' && element.role.value !== 'USER') {
+
+        Swal.fire({
+            icon: "error",
+            title: "El rol debe ser USER o ADMIN!",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+
+    };
+
+    const findEmail = users.find(user => user.email === element.email.value);
+
+    if (findEmail && findEmail.id !== element.id.value) {
+
+        Swal.fire({
+            icon: "error",
+            title: "El correo ya se encuentra registrado!",
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+
+    };
+
+    if (element.id.value) {
+
+        const index = users.findIndex(user => user.id === element.id.value);
+
+        users[index] = newUser;
+
+        Swal.fire({
+            icon: "success",
+            title: "Usuario editado exitosamente!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+        formHTML.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
+        formHTML.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
+
+    } else {
+
+        Swal.fire({
+            icon: "success",
+            title: "Usuario agregado exitosamente!",
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+        users.push(newUser);
+
+    };
+
+    paintUsers(users);
+
+    resetForm();
+
+    updateStorage();
+
+});

@@ -1,51 +1,6 @@
-const productsStart = [
-    {
-        id: crypto.randomUUID(),
-        image: '/assets/images/logo.png',
-        name: 'Alfajores de maicena',
-        description: 'Estos alfajores son los peores que probe en mi vida, la verdad una tremenda cagada y un desperdicio de plata.',
-        category: 'Panaderia',
-        price: 400,
-        createDate: new Date().getTime(),
-    },
-    {
-        id: crypto.randomUUID(),
-        image: '/assets/images/logo.png',
-        name: 'Budin de banana',
-        description: 'Este budin parece que lo hacen con bananas podridas, el sabor te dan ganas de vomitar, yo no se si primero cagan y se limpian con la mano y lo hacen asi nomas porque tiene un sabor a mierda increible.',
-        category: 'Postres',
-        price: 800,
-        createDate: new Date().getTime(),
-    },
-    {
-        id: crypto.randomUUID(),
-        image: '/assets/images/logo.png',
-        name: 'Chees Cake de arandanos',
-        description: 'Por empezar el precio un robo, la textura de por si fea, y el sabor una mierda, nada mas que decir.',
-        category: 'Postres',
-        price: 1000,
-        createDate: new Date().getTime(),
-    },
-    {
-        id: crypto.randomUUID(),
-        image: '/assets/images/logo.png',
-        name: 'Empanadas de carne',
-        description: 'Todavia no salieron a la venta, espero que nunca lo hagan, todo lo que hacen estas dos fracasadas es una mierda.',
-        category: 'Comidas',
-        price: 500,
-        createDate: new Date().getTime(),
-    },
-];
-
 const formHTML = document.getElementById('form');
 const tableHTML = document.getElementById('tbody');
 const searchHTML = document.getElementById('search');
-
-if (JSON.parse(localStorage.getItem('product')) === null) {
-
-    localStorage.setItem('product', JSON.stringify(productsStart));
-
-};
 
 const products = JSON.parse(localStorage.getItem('product'));
 
