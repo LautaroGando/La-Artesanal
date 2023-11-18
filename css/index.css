@@ -88,6 +88,17 @@
     min-width: 900px;
 }
 
+#profile {
+
+    & img {
+        width: 70px;
+    }
+
+    & li {
+        list-style: none;
+    }
+}
+
 @media screen and (max-width: 992px) {
     
     .custom-form {

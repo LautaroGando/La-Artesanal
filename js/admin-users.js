@@ -1,4 +1,4 @@
-const formHTML = document.getElementById('form');
+const formUserHTML = document.getElementById('formUser');
 const tableHTML = document.getElementById('tbody');
 const searchHTML = document.getElementById('search');
 
@@ -182,9 +182,9 @@ function editUser(id, name) {
 
 function resetForm() {
 
-    formHTML.reset();
+    formUserHTML.reset();
 
-    formHTML.elements.id.value = '';
+    formUserHTML.elements.id.value = '';
 
 };
 
@@ -218,7 +218,7 @@ searchHTML.addEventListener('keyup', (e) => {
 
 });
 
-formHTML.addEventListener('submit', (e) => {
+formUserHTML.addEventListener('submit', (e) => {
 
     e.preventDefault();
 
@@ -323,8 +323,8 @@ formHTML.addEventListener('submit', (e) => {
             timer: 1500
         });
 
-        formHTML.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
-        formHTML.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
+        formUserHTML.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
+        formUserHTML.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
 
     } else {
 

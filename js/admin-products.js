@@ -1,4 +1,4 @@
-const formHTML = document.getElementById('form');
+const formProductHTML = document.getElementById('formProduct');
 const tableHTML = document.getElementById('tbody');
 const searchHTML = document.getElementById('search');
 
@@ -175,9 +175,9 @@ function editProduct(id, name) {
 
 function resetForm() {
 
-    formHTML.reset();
+    formProductHTML.reset();
 
-    formHTML.elements.id.value = '';
+    formProductHTML.elements.id.value = '';
 
 };
 
@@ -187,7 +187,7 @@ function updateStorage() {
 
 };
 
-formHTML.addEventListener('submit', (e) => {
+formProductHTML.addEventListener('submit', (e) => {
 
     e.preventDefault();
 
@@ -218,8 +218,8 @@ formHTML.addEventListener('submit', (e) => {
             timer: 1500
         });
 
-        formHTML.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
-        formHTML.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
+        formProductHTML.querySelector('button[type="submit"]').innerHTML = 'AGREGAR';
+        formProductHTML.querySelector('h2').innerHTML = 'AGREGAR PRODUCTO';
 
     } else {
 

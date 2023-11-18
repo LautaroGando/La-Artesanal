@@ -1,4 +1,4 @@
-const users = JSON.parse(localStorage.getItem('user'));
+const users = JSON.parse(localStorage.getItem('user')) || [];
 
 const formRegister = document.getElementById('formRegister');
 const formLogin = document.getElementById('formLogin');
@@ -103,6 +103,53 @@ formRegister.addEventListener('submit', (e) => {
 
     formRegister.reset();
 
-    window.location.href = 'index.html';
+    setTimeout(() => {
+        
+        window.location.href = 'index.html';
+        
+    }, 2000);
+
+});
+
+formLogin.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const element = e.target.elements;
+
+    const email = element.emailLogin.value;
+    const pass = element.passLogin.value;
+
+    const findUser = users.find(usr => usr.email === email && usr.pass === pass);
+
+    if (!findUser) {
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Correo o clave incorrectos!',
+            showConfirmButton: false,
+            timer: 2000
+        });
+
+        return;
+
+    };
+
+    Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido!',
+        showConfirmButton: false,
+        timer: 2000
+    });
+
+    localStorage.setItem('login', JSON.stringify(findUser));
+
+    formRegister.reset();
+
+    setTimeout(() => {
+        
+        window.location.href = 'index.html';
+
+    }, 2000);
 
 });
