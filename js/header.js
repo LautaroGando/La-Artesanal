@@ -6,6 +6,31 @@ const profileHTML = document.getElementById('profile');
 const buttonImageHTML = document.createElement('button');
 const iImageHTML = document.createElement('i');
 
+const intercalateRegisterHTML = document.getElementById('intercalateRegister');
+const intercalateLoginHTML = document.getElementById('intercalateLogin');
+const formRegisterContentHTML = document.getElementById('formRegisterContent');
+const formLoginContentHTML = document.getElementById('formLoginContent');
+
+intercalateRegisterHTML.addEventListener('click', () => {
+
+    formRegisterContentHTML.classList.remove('d-block');
+    formRegisterContentHTML.classList.add('d-none');
+
+    formLoginContentHTML.classList.add('d-block');
+    formLoginContentHTML.classList.remove('d-none');
+
+});
+
+intercalateLoginHTML.addEventListener('click', () => {
+
+    formLoginContentHTML.classList.remove('d-block');
+    formLoginContentHTML.classList.add('d-none');
+
+    formRegisterContentHTML.classList.add('d-block');
+    formRegisterContentHTML.classList.remove('d-none');
+
+});
+
 buttonImageHTML.type = 'button';
 buttonImageHTML.setAttribute('data-bs-toggle', 'modal');
 buttonImageHTML.setAttribute('data-bs-target', '#exampleModal');
@@ -51,6 +76,8 @@ if (login) {
     aImgHTML.onclick = () => {
 
         localStorage.removeItem('login');
+
+        location.reload();
 
     };
 

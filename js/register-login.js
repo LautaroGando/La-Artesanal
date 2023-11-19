@@ -9,7 +9,7 @@ formRegister.addEventListener('submit', (e) => {
 
     const element = e.target.elements;
 
-    if (!element.image.value.trim() || !element.name.value.trim() || !element.username.value.trim() || !element.email.value.trim() || !element.confirmEmail.value.trim() || !element.pass.value.trim() || !element.confirmPass.value.trim() || !element.location.value.trim() || !element.date.value.trim() || !element.check.checked) {
+    if (!element.image.value.trim() || !element.name.value.trim() || !element.username.value.trim() || !element.email.value.trim() || !element.confirmEmail.value.trim() || !element.pass.value.trim() || !element.confirmPass.value.trim() || !element.location.value.trim() || !element.date.value.trim()) {
         Swal.fire({
             icon: 'error',
             title: 'Por favor, complete todos los campos requeridos.',

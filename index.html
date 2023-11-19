@@ -66,44 +66,42 @@
     <main>
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog custom-form">
-                <div class="modal-content">
+                <div id="formRegisterContent" class="modal-content d-block">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">REGISTRARSE</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="formRegister" class="needs-validation" novalidate>
+                        <form id="formRegister">
                             <div class="mb-3">
-                                <label for="image" class="form-label">Imagen</label>
                                 <input type="file" class="form-control" id="image" name="image" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 form-floating">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre y apellido" required>
                                 <label for="name" class="form-label">Nombre y apellido</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 form-floating">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Usuario" required>
                                 <label for="username" class="form-label">Usuario</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 form-floating">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Correo" required>
                                 <label for="email" class="form-label">Direccion de correo</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 form-floating">
+                                <input type="email" class="form-control" id="confirmEmail" name="confirmEmail" placeholder="Confirmar correo" required>
                                 <label for="confirmEmail" class="form-label">Confirmar direccion de correo</label>
-                                <input type="email" class="form-control" id="confirmEmail" name="confirmEmail" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 form-floating">
+                                <input type="password" class="form-control" id="pass" name="pass" placeholder="Clave" required>
                                 <label for="pass" class="form-label">Clave</label>
-                                <input type="password" class="form-control" id="pass" name="pass" required>
                             </div>
-                            <div class="mb-3">
+                            <div class="mb-3 form-floating">
+                                <input type="password" class="form-control" id="confirmPass" name="confirmPass" placeholder="Confirmar clave"
+                                required>
                                 <label for="confirmPass" class="form-label">Confirmar clave</label>
-                                <input type="password" class="form-control" id="confirmPass" name="confirmPass"
-                                    required>
                             </div>
                             <div class="mb-3">
-                                <label for="location" class="form-label">Localidad</label>
                                 <select name="location" id="location" class="form-control" required>
                                     <option value="">Seleccionar una opcion</option>
                                     <option value="Liniers">Liniers</option>
@@ -112,38 +110,40 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label for="date" class="form-label">Fecha de nacimiento</label>
                                 <input type="date" class="form-control" id="date" required>
                             </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="check" required>
-                                <label class="form-check-label" for="check">Acepto los terminos y condiciones</label>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Registrarse</button>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <a id="intercalateRegister" href="#">INGRESAR</a>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="modal-content">
+                <div id="formLoginContent" class="modal-content d-none">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">INGRESAR</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="formLogin" class="needs-validation" novalidate>
-                            <div class="mb-3">
-                                <label for="emailLogin" class="form-label">Direccion de correo</label>
-                                <input type="email" class="form-control" id="emailLogin" name="emailLogin" required>
+                        <form id="formLogin">
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="emailLogin" placeholder="Correo">
+                                <label for="emailLogin">Correo</label>
                             </div>
-                            <div class="mb-3">
-                                <label for="passLogin" class="form-label">Clave</label>
-                                <input type="password" class="form-control" id="passLogin" name="passLogin" required>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="passLogin"
+                                    placeholder="Clave">
+                                <label for="passLogin">Clave</label>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <a id="intercalateLogin" href="#">REGISTRARSE</a>
+                                <div>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                                </div>
                             </div>
                         </form>
                     </div>

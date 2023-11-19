@@ -88,6 +88,17 @@
     min-width: 900px;
 }
 
+.modal {
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, calc(-50%));
+}
+
+.modal-content {
+    width: 400px;
+}
+
 #profile {
 
     & img {
@@ -104,6 +115,14 @@
     .custom-form {
         flex-direction: column;
         min-width: 80%;
+    }
+
+    .modal {
+        width: 100%;
+    }
+    
+    .modal-content {
+        width: 100%;
     }
 
 }
