@@ -112,3 +112,50 @@ if (JSON.parse(localStorage.getItem('product')) === null) {
     localStorage.setItem('product', JSON.stringify(productsStart));
 
 };
+
+const cardsHTML = document.querySelector('.container-cards');
+
+const cards = [
+    {
+        image: 'https://imag.bonviveur.com/bizcochitos-de-grasa.jpg',
+        title: 'Bizcochitos',
+        description: 'Estos son una mierda',
+        price: 500,
+    },
+    {
+        image: 'https://imag.bonviveur.com/bizcochitos-de-grasa.jpg',
+        title: 'Bizcochitos',
+        description: 'Estos son una mierda',
+        price: 500,
+    },
+    {
+        image: 'https://imag.bonviveur.com/bizcochitos-de-grasa.jpg',
+        title: 'Bizcochitos',
+        description: 'Estos son una mierda',
+        price: 500,
+    },
+];
+
+function paintCard(array) {
+    
+    cardsHTML.innerHTML = '';
+
+    array.forEach(card => {
+        
+        cardsHTML.innerHTML += `<div class="card">
+                                    <img src="${card.image}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${card.title}</h5>
+                                        <p class="card-text">${card.description}</p>
+                                        <div class="d-flex justify-content-between">
+                                            <a href="#" class="btn btn-primary">Agregar</a>
+                                            <a href="#" class="btn disabled">$${card.price}</a>
+                                        </div>
+                                    </div>
+                                </div>`;
+
+    });
+
+};
+
+paintCard(cards);
